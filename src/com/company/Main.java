@@ -8,7 +8,9 @@ public class Main {
         Fracciones a= new Fracciones(1,2);
         Fracciones b =new Fracciones(3,4);
 
-        Fracciones resul = a.sumar(b);
+        //Fracciones resul = a.sumar(b);
+       //
+        Fracciones resul = a.multiplicar(b);
         resul.mostrar();
     }
 }
