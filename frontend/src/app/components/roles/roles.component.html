@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col s5">
+      <h5>Create Rol</h5>
+      <div class="card">
+        <div class="card-content">
+          <form #roleForm="ngForm" (ngSubmit)="addRole(roleForm)">
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="roleService.selectedRole._id">
+            <div class="row">
+              <div class="input-field col-s12">
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="roleService.selectedRole.name" placeholder="Enter one name">    
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="description" #description="ngModel" [(ngModel)]="roleService.selectedRole.description" placeholder="Enter description">
+              </div>
+              <div class="card-action">
+                <div class="input-field col-s12">
+                  <button class="btn right" (click)="resetForm(roleForm)" style="margin-left: 20px;">Clean</button>
+                  <button class="btn right">Save</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="col s7">
+      <h5>List of Roles</h5>
+      <table>
+        <thead>
+          <th>Rol Name</th>
+          <th>Description</th>
+          <th>Operations</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let role of roleService.roles">
+            <td>{{ role.name }}</td>
+            <td>{{ role.description }}</td>
+            <td>
+              <a (click)="editRole(role)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="deleteRole(role._id, roleForm)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
